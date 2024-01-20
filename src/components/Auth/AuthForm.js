@@ -28,7 +28,7 @@ const  passwordInputRef=useRef()
           body: JSON.stringify({
             email: enteredEmail,
             password: enteredPassword,
-            returnSecureToken: true,
+            returnSecureToken: true, 
           }),
           headers: {
             'Content-Type': 'application/json',
