@@ -3,12 +3,10 @@ import { useState, useRef } from 'react';
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
- 
-  const [isLogin, setIsLogin] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLogin, setIsLogin] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+const emailInputRef=useRef()
+const  passwordInputRef=useRef()
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
@@ -21,7 +19,7 @@ const AuthForm = () => {
 
     // optional: Add validation
 
-    setIsLoading(true);   
+    setLoading(true);   
     if (isLogin) {
       fetch(
         'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCAddUzy56S_Fd9ynLhR2NrwXQPUB1M2i8',
@@ -37,7 +35,7 @@ const AuthForm = () => {
           },
         }
       ).then((res) => {
-        setIsLoading(false);
+        setLoading(false);
         if (res.ok) {
           // ...
         } else {
@@ -66,7 +64,7 @@ const AuthForm = () => {
           },
         }
       ).then((res) => {
-        setIsLoading(false);
+        setLoading(false);
         if (res.ok) {
           // ...
         } else {
