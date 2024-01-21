@@ -21,8 +21,6 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    // optional: Add validation
-
     setIsLoading(true);
     let url;
     if (isLogin) {
@@ -46,8 +44,10 @@ const AuthForm = () => {
       .then((res) => {
         setIsLoading(false);
         if (res.ok) {
-          authctx.login();
-          return res.json().then((data => authctx.login(data.idToken)))
+          return res.json().then((data) => {
+            console.log(data.idToken);
+            authctx.login(data.idToken);
+          });
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication failed!";

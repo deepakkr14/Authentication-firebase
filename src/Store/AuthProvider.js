@@ -3,12 +3,15 @@ import { useHistory } from 'react-router-dom';
 
 import AuthContext from "./AuthContext";
  const AuthContextProvider = (props) => {
-  const [token, setToken] = useState(null);
+      const initialToken=localStorage.getItem('token'); 
+  const [token, setToken] = useState(initialToken);
+
   const history = useHistory();
   const userIsLoggedIn = !!token;
-
-  const loginHandler = (token) => {
+  console.log(userIsLoggedIn,token)
+const loginHandler = (token) => {
     setToken(token);
+    localStorage.setItem('token',token)
     // window.location.href = "/profile";
     history.push('/profile');
   };
@@ -16,6 +19,7 @@ import AuthContext from "./AuthContext";
   const logoutHandler = () => {
     setToken(null);
     history.push('/auth');
+    localStorage.removeItem('token')
     console.log('i am logout')
   };
 
