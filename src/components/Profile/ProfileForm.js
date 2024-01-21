@@ -1,8 +1,9 @@
 import classes from "./ProfileForm.module.css";
 import AuthContext from "../../Store/AuthContext";
 import { useRef, useContext } from "react";
-
+import { useHistory } from 'react-router-dom';
 const ProfileForm = () => {
+  const history = useHistory();
   const passwordInputRef = useRef();
   const authctx = useContext(AuthContext);
   const submit = (e) => {
@@ -26,8 +27,13 @@ const ProfileForm = () => {
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication failed!";
-            if (data && data.error && data.error.message) {
-              errorMessage = data.error.message;
+            // if (data && data.error && data.error.message) {
+    
+            //   errorMessage = data.error.message;
+            // }
+            if(errorMessage){
+              alert('SESSION EXPIRED LOGIN AGAIN')
+              history.push('/auth');
             }
 
             throw new Error(errorMessage);

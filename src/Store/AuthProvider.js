@@ -13,6 +13,10 @@ const loginHandler = (token) => {
     setToken(token);
     localStorage.setItem('token',token)
     // window.location.href = "/profile";
+    setTimeout(()=>{
+        localStorage.removeItem('token');
+        setToken(null)
+    },3000)
     history.push('/profile');
   };
 
