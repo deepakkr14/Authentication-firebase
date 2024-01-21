@@ -4,9 +4,12 @@ import Layout from './components/Layout/Layout';
 import UserProfile from './components/Profile/UserProfile';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
+import LoginContext from './Store/AuthProvider'
 
 function App() {
   return (
+    <LoginContext>
+
     <Layout>
       <Switch>
         <Route path='/' exact>
@@ -20,6 +23,7 @@ function App() {
         </Route>
       </Switch>
     </Layout>
+    </LoginContext>
   );
 }
 
