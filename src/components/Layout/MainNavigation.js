@@ -5,6 +5,7 @@ import AuthContext from "../../Store/AuthContext";
 const MainNavigation = () => {
   const authctx = useContext(AuthContext);
   // const status=authctx.isLoggedIn;
+  
   return (
     <header className={classes.header}>
       <Link to="/">

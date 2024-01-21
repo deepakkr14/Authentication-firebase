@@ -47,7 +47,6 @@ const AuthForm = () => {
         setIsLoading(false);
         if (res.ok) {
           authctx.login();
-          console.log(res.idToken);
           return res.json().then((data => authctx.login(data.idToken)))
         } else {
           return res.json().then((data) => {
