@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
+
 
 import AuthContext from "./AuthContext";
  const AuthContextProvider = (props) => {
       const initialToken=localStorage.getItem('token'); 
   const [token, setToken] = useState(initialToken);
 
-  const history = useHistory();
+
   const userIsLoggedIn = !!token;
   console.log(userIsLoggedIn,token)
 const loginHandler = (token) => {
@@ -16,13 +16,13 @@ const loginHandler = (token) => {
     setTimeout(()=>{
         localStorage.removeItem('token');
         setToken(null)
-    },3000)
-    history.push('/profile');
+    },30000)
+   
   };
 
   const logoutHandler = () => {
     setToken(null);
-    history.push('/auth');
+ 
     localStorage.removeItem('token')
     console.log('i am logout')
   };
